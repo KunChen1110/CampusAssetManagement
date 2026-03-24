@@ -10,4 +10,8 @@ sky:
     endpoint: oss-cn-beijing.aliyuncs.com
     access-key-id: <your-access-key>
     access-key-secret: <your-access-key-secret>
-    bucket-name: <your-bucket-name>
+
+  redis:
+    host: localhost
+    port: 6379
+    database: 0
