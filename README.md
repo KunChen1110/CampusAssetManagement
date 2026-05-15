@@ -1,8 +1,22 @@
-# Campus Asset Management and Intelligent Analysis System
+<div align="center">
 
-[中文](README.zh-CN.md) | English
+# Campus Asset Management
 
-A Spring Boot backend for campus asset management, usage tracking, statistics, and controlled natural-language asset queries.
+### Campus asset management and intelligent analysis backend built with Spring Boot
+
+[English](README.md) | [简体中文](README.zh-CN.md)
+
+![Java](https://img.shields.io/badge/Java-17-007396?style=flat-square)
+![Spring Boot](https://img.shields.io/badge/Spring%20Boot-2.7.3-6DB33F?style=flat-square)
+![MyBatis](https://img.shields.io/badge/MyBatis-ORM-BB1B1B?style=flat-square)
+![MySQL](https://img.shields.io/badge/MySQL-Database-4479A1?style=flat-square)
+![Redis](https://img.shields.io/badge/Redis-Cache-DC382D?style=flat-square)
+![JWT](https://img.shields.io/badge/JWT-Auth-000000?style=flat-square)
+![Maven](https://img.shields.io/badge/Maven-Multi--Module-C71A36?style=flat-square)
+
+</div>
+
+---
 
 ## Overview
 

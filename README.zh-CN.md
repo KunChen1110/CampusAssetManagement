@@ -1,8 +1,22 @@
+<div align="center">
+
 # 校园资产管理与智能分析系统
 
-中文 | [English](README.md)
+### 基于 Spring Boot 的校园资产管理与智能分析后端系统
 
-一个基于 Spring Boot 的校园资产管理后端系统，支持资产管理、使用记录、统计分析和受控自然语言查询。
+[English](README.md) | [简体中文](README.zh-CN.md)
+
+![Java](https://img.shields.io/badge/Java-17-007396?style=flat-square)
+![Spring Boot](https://img.shields.io/badge/Spring%20Boot-2.7.3-6DB33F?style=flat-square)
+![MyBatis](https://img.shields.io/badge/MyBatis-ORM-BB1B1B?style=flat-square)
+![MySQL](https://img.shields.io/badge/MySQL-Database-4479A1?style=flat-square)
+![Redis](https://img.shields.io/badge/Redis-Cache-DC382D?style=flat-square)
+![JWT](https://img.shields.io/badge/JWT-Auth-000000?style=flat-square)
+![Maven](https://img.shields.io/badge/Maven-Multi--Module-C71A36?style=flat-square)
+
+</div>
+
+---
 
 ## 项目简介
 
