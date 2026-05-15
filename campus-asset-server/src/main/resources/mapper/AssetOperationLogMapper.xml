@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.campus.asset.mapper.AssetOperationLogMapper">
+
+    <select id="pageQuery" resultType="com.campus.asset.entity.AssetOperationLog">
+        select * from asset_operation_log
+        <where>
+            <if test="assetId != null">
+                and asset_id = #{assetId}
+            </if>
+            <if test="operationType != null and operationType != ''">
+                and operation_type = #{operationType}
+            </if>
+            <if test="beginTime != null">
+                and create_time &gt;= #{beginTime}
+            </if>
+            <if test="endTime != null">
+                and create_time &lt;= #{endTime}
+            </if>
+        </where>
+        order by create_time desc
+    </select>
+</mapper>

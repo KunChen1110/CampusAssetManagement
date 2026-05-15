@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.campus.asset.mapper.AssetStatisticsMapper">
+
+    <select id="summary" resultType="com.campus.asset.vo.AssetStatisticsSummaryVO">
+        select
+            count(*) as totalAssets,
+            sum(case when status = 'ACTIVE' then 1 else 0 end) as activeAssets,
+            sum(case when status = 'IDLE' then 1 else 0 end) as idleAssets,
+            sum(case when status = 'MAINTENANCE' then 1 else 0 end) as maintenanceAssets,
+            coalesce(sum(original_value), 0) as totalOriginalValue
+        from asset
+    </select>
+
+    <select id="topUsed" resultType="com.campus.asset.vo.AssetUsageRankingVO">
+        select
+            a.id as assetId,
+            a.asset_code as assetCode,
+            a.name as assetName,
+            count(r.id) as usageCount
+        from asset_usage_record r
+        inner join asset a on r.asset_id = a.id
+        group by a.id, a.asset_code, a.name
+        order by usageCount desc, a.id asc
+        limit #{limit}
+    </select>
+
+    <select id="categoryDistribution" resultType="com.campus.asset.vo.AssetCategoryDistributionVO">
+        select
+            c.id as categoryId,
+            c.name as categoryName,
+            count(a.id) as assetCount
+        from asset_category c
+        left join asset a on a.category_id = c.id
+        group by c.id, c.name
+        order by assetCount desc, c.id asc
+    </select>
+</mapper>

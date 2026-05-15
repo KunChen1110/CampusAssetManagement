@@ -1,0 +1,46 @@
+server:
+  port: 8080
+
+spring:
+  profiles:
+    active: dev
+  main:
+    allow-circular-references: true
+  datasource:
+    druid:
+      driver-class-name: ${campus.asset.datasource.driver-class-name}
+      url: jdbc:mysql://${campus.asset.datasource.host}:${campus.asset.datasource.port}/${campus.asset.datasource.database}?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
+      username: ${campus.asset.datasource.username}
+      password: ${campus.asset.datasource.password}
+  redis:
+    host: ${campus.asset.redis.host}
+    port: ${campus.asset.redis.port}
+    database: ${campus.asset.redis.database}
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.campus.asset.entity
+  configuration:
+    map-underscore-to-camel-case: true
+
+logging:
+  level:
+    com:
+      campus:
+        asset:
+          mapper: debug
+          service: info
+          controller: info
+
+campus:
+  asset:
+    jwt:
+      admin-secret-key: itcast
+      admin-ttl: 7200000
+      admin-token-name: token
+
+    # alioss:
+    #   endpoint: ${campus.asset.alioss.endpoint}
+    #   access-key-id: ${campus.asset.alioss.access-key-id}
+    #   access-key-secret: ${campus.asset.alioss.access-key-secret}
+    #   bucket-name: ${campus.asset.alioss.bucket-name}

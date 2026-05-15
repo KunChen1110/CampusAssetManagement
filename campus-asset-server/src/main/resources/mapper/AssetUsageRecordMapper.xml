@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.campus.asset.mapper.AssetUsageRecordMapper">
+
+    <update id="update" parameterType="com.campus.asset.entity.AssetUsageRecord">
+        update asset_usage_record
+        <set>
+            <if test="assetId != null">asset_id = #{assetId},</if>
+            <if test="userName != null">user_name = #{userName},</if>
+            <if test="department != null">department = #{department},</if>
+            <if test="usageStartTime != null">usage_start_time = #{usageStartTime},</if>
+            <if test="usageEndTime != null">usage_end_time = #{usageEndTime},</if>
+            <if test="purpose != null">purpose = #{purpose},</if>
+            <if test="status != null">status = #{status},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <select id="pageQuery" resultType="com.campus.asset.entity.AssetUsageRecord">
+        select * from asset_usage_record
+        <where>
+            <if test="assetId != null">
+                and asset_id = #{assetId}
+            </if>
+            <if test="userName != null and userName != ''">
+                and user_name like concat('%', #{userName}, '%')
+            </if>
+            <if test="department != null and department != ''">
+                and department like concat('%', #{department}, '%')
+            </if>
+            <if test="status != null and status != ''">
+                and status = #{status}
+            </if>
+            <if test="beginTime != null">
+                and usage_start_time &gt;= #{beginTime}
+            </if>
+            <if test="endTime != null">
+                and usage_start_time &lt;= #{endTime}
+            </if>
+        </where>
+        order by usage_start_time desc, create_time desc
+    </select>
+</mapper>
